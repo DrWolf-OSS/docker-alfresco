@@ -24,7 +24,10 @@ Adapt these values to your database. The container doesn't start a MySQL server,
 
 ## Run the container
 
-`docker run -d <yourname>/alfresco-42f`
+`docker run -d -P <yourname>/alfresco-42f`
+
+The container will start the supervisor daemon which launches SSH server and Alfresco.
+With the `-P` option, the 22 and 8080 ports are [automatically mapped](http://docs.docker.io/use/port_redirection/#port-redirection) to a free host's ports (in the pool 49000..49900). User `docker ps` to find the used ports.
 
 ## Mount folders from the host
 
@@ -35,6 +38,20 @@ Find the path of the folder, e.g. `/home/myuser/docker-alfresco/templates/alf_da
 `docker run -d -v /home/myuser/docker-alfresco/templates/alf_data:/opt/alfresco-4.2.f/alf_data <yourname>/alfresco-42f`
 
 You can also mount other useful folders, like `/opt/alfresco-4.2.f/tomcat/logs/`
+
+## SSH access
+
+The root password is set to `s3cr3t` by the Dockerfile, set there your own password
+
+## Alfresco and Alfresco Share access
+
+If you used the `-P` option to launch the container, find the host's port mapped to the container's 8080 port, e.g. 49154, and point your browser to it:
+
+* **Alfresco:** http://<HOST_IP>:<CONTAINER_PORT>/alfresco
+* **Alfresco Share:** http://<HOST_IP>:<CONTAINER_PORT>/share
+
+For both the initial username is `admin` and the password `s3cr3t`
+
 ## Credits
 
 This repository is managed by Dr Wolf srl http://www.drwolf.it
