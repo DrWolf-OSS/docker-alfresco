@@ -61,8 +61,8 @@ The root password is set to `s3cr3t` by the Dockerfile, set there your own passw
 
 If you used the `-P` option to launch the container, find the host's port mapped to the container's 8080 port, e.g. 49154, and point your browser to it:
 
-* **Alfresco:** http://<HOST_IP>:<CONTAINER_PORT>/alfresco
-* **Alfresco Share:** http://<HOST_IP>:<CONTAINER_PORT>/share
+* **Alfresco:** http://HOST_IP:CONTAINER_PORT/alfresco
+* **Alfresco Share:** http://HOST_IP:CONTAINER_PORT/share
 
 For both the initial username is `admin` and the password `s3cr3t`
 
